@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            height: 200px;
+        }
+
+        .cc {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /*上下左右居中  start*/
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /*上下左右居中  end*/
+        }
+
+        .c1 {
+            /*主轴居中对齐*/
+            justify-content: center;
+            /*侧轴居中对齐*/
+            align-items: center;
+            background: #f22;
+            width: 200px;
+        }
+
+        .c1:nth-of-type(odd) {
+            background: #ff2;
+        }
+
+        .c1:nth-of-type(even) {
+            line-height: 200px;
+            text-align: center;
+        }
+
+        .cc2 {
+            display: flex;
+        }
+
+        .c2 {
+            /* float: left; */
+            width: calc(100vw - 200px);
+            /* width: 100%; */
+            background: green;
+        }
+
+        .c3 {
+            width: 200px;
+            background: #ff2
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cc">
+        <div class="c1">text1</div>
+        <div class="c1">text2</div>
+        <div class="c1">text3</div>
+        <div class="c1">text4</div>
+        <div class="c1">text5</div>
+    </div>
+    <div class="cc2">
+        <div class="c3">c33</div>
+        <div class="c2">c2222</div>
+    </div>
+
+
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    // function test(resolve, reject) {
+    //     var timeOut = Math.random() * 20;
+    //     console.log('set timeout to: ' + timeOut + ' seconds.');
+    //     setTimeout(function () {
+    //         if (timeOut < 1) {
+    //             console.log('call resolve()...');
+    //             resolve('200 OK');
+    //         } else {
+    //             console.log('call reject()...');
+    //             reject('timeout in ' + timeOut + ' seconds.');
+    //         }
+    //     }, timeOut * 1000);
+    // }
+
+
+    // var p1 = new Promise(test);
+    // var p2 = p1.then(function (result) {
+    //     console.log('成功：' + result);
+    // });
+    // var p3 = p2.catch(function (reason) {
+    //     console.log('失败：' + reason);
+    // });
+
+
+    // new Promise(function (resolve, reject) {
+    //     console.log('start new Promise...');
+    //     var timeOut = Math.random() * 2;
+    //     console.log('set timeout to: ' + timeOut + ' seconds.');
+    //     setTimeout(function () {
+    //         if (timeOut < 1) {
+    //             console.log('call resolve()...');
+    //             resolve('200 OK');
+    //         } else {
+    //             console.log('call reject()...');
+    //             reject('timeout in ' + timeOut + ' seconds.');
+    //         }
+    //     }, timeOut * 1000);
+    // }).then(function (r) {
+    //     console.log('Done: ' + r);
+    // }).catch(function (reason) {
+    //     console.log('Failed: ' + reason);
+    // });
+    function log(p) {
+        console.log(p);
+    }
+
+    // 0.5秒后返回input*input的计算结果:
+    function multiply(input) {
+        return new Promise(function (resolve, reject) {
+            log('calculating ' + input + ' x ' + input + '...');
+            log(input * input)
+            setTimeout(resolve, 500, input * input);
+        });
+    }
+
+    // 0.5秒后返回input+input的计算结果:
+    function add(input) {
+        return new Promise(function (resolve, reject) {
+            log('calculating ' + input + ' + ' + input + '...');
+            log(input + input)
+            setTimeout(resolve, 500, input + input);
+        });
+    }
+
+    var p = new Promise(function (resolve, reject) {
+        log('start new Promise...');
+        resolve(123);
+    });
+
+    p.then(multiply)
+        .then(add)
+        .then(multiply)
+        .then(add)
+        .then(function (result) {
+            log('Got value: ' + result);
+        });
+</script>
+
+</html>

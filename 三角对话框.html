@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+    		margin: 0;
+    		padding: 0;
+    	} 	
+    	.main,.main2{
+    		width: 120px;
+    		display: inline-block;
+    		font-size: 14px;
+    		color: #333;
+    		line-height: 28px;
+    		background: #F0981C;
+    		position: relative;
+    		padding: 10px;
+    		-webkit-border-radius:5px;
+    		-moz-border-radius:5px;
+    		border-radius: 5px;
+    	}
+    	/*左三角*/
+    	.main:before{
+    		content: ' ';
+    		border-top: 8px solid transparent;
+    		border-bottom: 8px solid transparent;
+    		border-right: 12px solid #F0981C;
+    		position: absolute;
+    		top: 15px;
+    		left: -12px;
+    	}
+    	/*右三角*/
+    	.main:after{
+    		content: ' ';
+    		border-top: 8px solid transparent;
+    		border-bottom: 8px solid transparent;
+    		border-left: 12px solid #F0981C;
+    		position: absolute;
+    		bottom: 15px;
+    		right: -12px;
+    	}
+    	/*上三角*/
+    	.main2:before{
+    		content: ' ';
+    		border-bottom: 8px solid #F0981C;
+    		border-left: 8px solid transparent;
+    		border-right: 12px solid transparent;
+    		position: absolute;
+    		top: -8px;
+    		left: 20px;
+    	}
+    	/*下三角*/
+    	.main2:after{
+    		content: ' ';
+    		border-top: 8px solid #F0981C;
+    		border-left: 12px solid transparent;
+    		border-right: 12px solid transparent;
+    		position: absolute;
+    		bottom: -8px;
+    		right: 20px;
+    	}
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+        <p>这是内容这是内容这是内容这是内容这是内容这是内容</p>
+    </div>
+    <div class="main2">
+        <p>这是内容这是内容这是内容这是内容这是内容这是内容</p>
+
+</body>
+
+</html>
